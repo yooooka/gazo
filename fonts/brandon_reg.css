@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'BrandonGrotesqueRegular';
+    src: url('brandon_reg.eot');
+    src: url('brandon_reg.eot') format('embedded-opentype'),
+         url('brandon_reg.woff') format('woff'),
+         url('brandon_reg.ttf') format('truetype'),
+         url('brandon_reg.svg#BrandonGrotesqueRegular') format('svg');
+}

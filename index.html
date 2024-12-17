@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html ng-app="kitchensink">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>Gazo! Templatizer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/gazo.css" rel="stylesheet">
+    <link href="fonts/brandon.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- Fabric.js CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"></script>
+    <!--<script src="fabric.js"></script>-->
+
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Templatizer</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Let's start</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container" ng-controller="CanvasControls">
+
+      <div class="main-title">
+        <h1 class="hide">Templatizer!</h1>
+        <!--<p>Use this document as a way to quickly start any new project. All you get is this text and a mostly barebones HTML document.</p>-->
+		<p class="lead"></p>
+		<div class="row">
+		<div class="col-md-9">
+			<div class="canvas-position" style="width:660px; margin-bottom:10px; position:relative;">
+			<canvas id="canvaslower" width="659px" height="179px" style="border: 1px solid #eee;"></canvas>
+			<canvas id="canvas" width="660px" height="180px" style=""></canvas>
+			</div>
+		</div>
+       <div class="col-md-3">
+       <!--  Accordion nav -->
+			<div id="accordion" class="panel-group text-left object-controls" object-buttons-enabled="getSelected()">
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+			          1. Select layout type
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseOne" class="panel-collapse collapse">
+			      <div class="panel-body">
+			        <ul class="choose-type">
+			        	<li>Single device ( <a href="" ng-click="setLayout('front')">Front</a> | <a href="" ng-click="setLayout('angled')">Angled</a> )</li>
+			        	<li><a href="" ng-click="setLayout('split')">Split type</a></li>
+			        	<li>Background ( <a href="" ng-click="addbg()">Add</a> | <a href="" ng-click="removebg()">Remove</a> )</li>
+			        </ul>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+			          2. Select OU device
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseTwo" class="panel-collapse collapse">
+			      <div class="panel-body">
+			        <ul class="choose-type">
+			        	<li><a href="" ng-click="setOU('US')">US</a></li>
+			        	<li><a href="" ng-click="setOU('DE')">DE</a></li>
+			        	<li><a href="" ng-click="setOU('ES')">ES</a></li>
+			        	<li><a href="" ng-click="setOU('IT')">IT</a></li>
+			        	<li><a href="" ng-click="setOU('CN')">CN</a></li>
+			        	<li><a href="" ng-click="setOU('JP')">JP</a></li>
+<!--<li><a href="" ng-click="clearscreen()">Remove device</a></li>-->
+			        </ul>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+			          3. Edit/add text
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseThree" class="panel-collapse collapse">
+			      <div class="panel-body">
+					<p class="text-danger" id="select-txt" ng-hide="getText()">Please select a text to edit.</p>
+						<div id="text-wrapper" ng-show="getText()">
+              <textarea bind-value-to="text" class="form-control"></textarea>
+              <div id="text-controls">
+                <label for="text-align" style="display:inline-block">Text align:</label>
+                <select id="text-align" class="btn-object-action form-control input-sm" bind-value-to="textAlign">
+                  <option>Left</option>
+                  <option>Center</option>
+                  <option>Right</option>
+                  <option>Justify</option>
+                </select>
+                <div>
+                  <label for="text-font-size">Font size:</label>
+                  <input type="range" value="" min="1" max="120" step="1" id="text-font-size" class="btn-object-action"
+                  bind-value-to="fontSize">
+                </div>
+                <div>
+                  <label for="text-line-height">Line height:</label>
+                  <input type="range" value="" min="0" max="10" step="0.1" id="text-line-height" class="btn-object-action"
+                  bind-value-to="lineHeight">
+                </div>
+              </div>
+              <div id="text-controls-additional">
+                <button type="button" class="btn btn-object-action btn-xs"
+                  ng-click="toggleBold()"
+                  ng-class="{'btn-inverse': isBold()}">
+                  Bold
+                </button>
+                <button type="button" class="btn btn-object-action btn-xs" id="text-cmd-italic"
+                  ng-click="toggleItalic()"
+                  ng-class="{'btn-inverse': isItalic()}">
+                  Italic
+                </button>
+                <button type="button" class="btn btn-object-action btn-xs" id="text-cmd-linethrough"
+                  ng-click="toggleLinethrough()"
+                  ng-class="{'btn-inverse': isLinethrough()}">
+                  Linethrough
+                </button>
+              </div>
+            </div>
+					<button class="btn btn-default" ng-click="removeSelected()" ng-show="getText()">Remove selected text <span class="glyphicon glyphicon-ban-circle"></span></button>
+					<button class="btn btn-default" ng-click="addText()">Add a new text <span class="glyphicon glyphicon-pencil"></span></button>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+			          Switch Logo
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseFour" class="panel-collapse collapse">
+			      <div class="panel-body">
+			        <ul class="choose-type clearfix">
+			        	<li class="img-vertical"><a href="" id="PW-normal" ng-click="addLogo1()"><img src="images/Kindle_Paperwhite_Logo.svg" alt="Normal" style="height:40px; vertical-align:middle;"></a></li>
+			        	<li class="img-vertical"><a href="" id="PW-inline" ng-click="addLogo2()"><img src="images/Kindle_Paperwhite_Logo_Inline.svg" alt="Inline" style="height:25px; vertical-align:middle;"></a></li>
+			        </ul>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<div class="top-margin pull-right">
+<!--
+			<button class="btn btn-default" ng-click="onoffbg()">Remove/Add background</button>
+			<button class="btn btn-default" ng-click="removebg()">Remove background <span class="glyphicon glyphicon-ban-circle"></span></button>
+			<button class="btn btn-default" ng-click="addbg()">Add background <span class="glyphicon glyphicon-ok-circle"></span></button>
+-->
+			<button class="btn btn-default" ng-click="removeSelected()">Remove Selected Object <span class="glyphicon glyphicon-ban-circle"></span></button>
+			<button class="btn btn-warning" ng-click="Reset()">Reset <span class="glyphicon glyphicon-remove"></span></button>
+			<button class="btn btn-success" ng-click="rasterize()">Publish image <span class="glyphicon glyphicon-export"></span></button>
+			</div>
+       	</div>
+	  </div>
+      </div>
+
+	<script src="angular-fabric/utils.js"></script>
+	<script src="angular-fabric/app_config.js"></script>
+	<script src="angular-fabric/controller.js"></script>
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

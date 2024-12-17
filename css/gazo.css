@@ -1,0 +1,44 @@
+body {
+padding-top: 20px;
+}
+.main-title {
+    padding: 20px 15px;
+}
+.clearfix:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+.choose-type{
+	padding-left: 10px;
+	margin-bottom: 0;
+}
+.choose-type > li{
+	display: inline-block;
+	margin-right: 20px;
+	padding: 0.2em 0;
+}
+
+.img-vertical img{
+    vertical-align: middle;
+	margin: 10px;
+}
+.img-vertical{
+	border: 1px solid #efefef;
+	margin: 5px auto;
+}
+
+
+.top-margin { 
+    margin-top: 10px;
+}
+.btn{
+	margin-bottom:7px;
+}
+.canvas-position canvas{
+	position:absolute;
+	top: 0;
+	left: 0;
+}

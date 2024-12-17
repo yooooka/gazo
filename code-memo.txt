@@ -1,0 +1,147 @@
+---code memo
+.bringToFront()
+
+	var text = "The World's Best-Selling E-reader";	
+    var copydefault = new fabric.IText(text, {
+     left: getRandomInt(0, 300),
+     top: getRandomInt(0, 150),
+      fontFamily: 'BrandonGrotesqueLight',
+      fill: '#000',
+	  fontSize: 23,
+      fontWeight: '',
+      originX: 'left',
+      hasControls: false,
+      editable: false
+    });
+
+---
+
+	var ctrarrow = new fabric.Text('>', {
+		left: 400,
+		top: 120,
+	  	fontSize: 12,
+	});
+    var ctrdefault = new fabric.IText('Shop now', {
+      left: 410,
+      top:  120,
+      fontFamily: 'Arial',
+      fill: '#146eb4',
+	  fontSize: 12,
+      originX: 'left',
+      hasControls: false,
+	  textDecoration: 'underline',
+	});
+	var groupCtr = new fabric.Group([ctrarrow, ctrdefault],{ top: 120, left: 400, hasControls:false })  
+    canvas.add(groupCtr);
+
+
+--
+    var iText = new fabric.IText('lorem ipsum\ndolor\nsit Amet\nconsectetur', {
+      left: 100,
+      top: 150,
+      fontFamily: 'Helvetica',
+      fill: '#333',
+      styles: {
+        0: {
+          0: { fill: 'red', fontSize: 20 },
+          1: { fill: 'red', fontSize: 30 },
+          2: { fill: 'red', fontSize: 40 },
+          3: { fill: 'red', fontSize: 50 },
+          4: { fill: 'red', fontSize: 60 },
+
+          6: { textBackgroundColor: 'yellow' },
+          7: { textBackgroundColor: 'yellow' },
+          8: { textBackgroundColor: 'yellow' },
+          9: { textBackgroundColor: 'yellow' }
+        },
+        1: {
+          0: { textDecoration: 'underline' },
+          1: { textDecoration: 'underline' },
+          2: { fill: 'green', fontStyle: 'italic', textDecoration: 'underline' },
+          3: { fill: 'green', fontStyle: 'italic', textDecoration: 'underline' },
+          4: { fill: 'green', fontStyle: 'italic', textDecoration: 'underline' }
+        },
+        2: {
+          0: { fill: 'blue', fontWeight: 'bold' },
+          1: { fill: 'blue', fontWeight: 'bold' },
+          2: { fill: 'blue', fontWeight: 'bold' },
+
+          4: { fontFamily: 'Courier', textDecoration: 'line-through' },
+          5: { fontFamily: 'Courier', textDecoration: 'line-through' },
+          6: { fontFamily: 'Courier', textDecoration: 'line-through' },
+          7: { fontFamily: 'Courier', textDecoration: 'line-through' }
+        },
+        3: {
+          0: { fontFamily: 'Impact', fill: '#666', textDecoration: 'line-through' },
+          1: { fontFamily: 'Impact', fill: '#666', textDecoration: 'line-through' },
+          2: { fontFamily: 'Impact', fill: '#666', textDecoration: 'line-through' },
+          3: { fontFamily: 'Impact', fill: '#666', textDecoration: 'line-through' },
+          4: { fontFamily: 'Impact', fill: '#666', textDecoration: 'line-through' }
+        }
+      }
+    });
+
+
+--
+ng-show="getText()"
+
+
+left:canvas.getWidth() / 3.7,
+top: canvas.getHeight() / 2.5,
+
+
+-- font attribute
+left:canvas.getWidth() / 3.7,
+top: canvas.getHeight() / 2.5,
+fontFamily: 'BrandonGrotesqueLight',
+fill: '#666',
+scaleX: 0.5,
+scaleY: 0.5,
+fontWeight: '',
+originX: 'left',
+hasRotatingPoint: false,
+centerTransform: false
+
+
+--
+  $scope.addRect = function() {
+    var coord = getRandomLeftTop();
+
+    canvas.add(new fabric.Rect({
+      left: coord.left,
+      top: coord.top,
+      fill: '#' + getRandomColor(),
+      width: 50,
+      height: 50,
+      opacity: 0.8
+    }));
+  };
+
+---
+
+var textSample = new fabric.Text(text.slice(0, getRandomInt(0, text.length)), {
+     left: getRandomInt(350, 400),
+     top: getRandomInt(350, 400),
+
+---
+
+ $scope.clearText = function() {
+    var activeObject = canvas.getActiveObject(),
+        activeGroup = canvas.getActiveGroup();
+
+    if (activeGroup) {
+      var objectsInGroup = activeGroup.getObjects();
+      canvas.discardActiveGroup();
+      objectsInGroup.forEach(function(object) {
+        canvas.remove(object);
+      });
+    }
+    else if (activeObject) {
+      canvas.remove(activeObject);
+    }
+  };
+
+--
+	canvas.setActiveObject(copydefault); 
+	removetext = copydefault;  
+

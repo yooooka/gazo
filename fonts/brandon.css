@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'BrandonGrotesqueLight';
+    src: url('brandon_light.eot');
+    src: url('brandon_light.eot') format('embedded-opentype'),
+         url('brandon_light.woff') format('woff'),
+         url('brandon_light.ttf') format('truetype'),
+         url('brandon_light.svg#BrandonGrotesqueLight') format('svg');
+}
+
+
+@font-face {
+    font-family: 'BrandonGrotesqueRegular';
+    src: url('brandon_reg.eot');
+    src: url('brandon_reg.eot') format('embedded-opentype'),
+         url('brandon_reg.woff') format('woff'),
+         url('brandon_reg.ttf') format('truetype'),
+         url('brandon_reg.svg#BrandonGrotesqueRegular') format('svg');
+}
+
+
+@font-face {
+    font-family: 'BrandonGrotesqueBlack';
+    src: url('brandon_blk.eot');
+    src: url('brandon_blk.eot') format('embedded-opentype'),
+         url('brandon_blk.woff') format('woff'),
+         url('brandon_blk.ttf') format('truetype'),
+         url('brandon_blk.svg#BrandonGrotesqueBlack') format('svg');
+}
