@@ -344,7 +344,20 @@ kitchensink.controller("CanvasControls", function ($scope) {
       } else {
         canvas.remove(gwArrows);
         canvas.deactivateAll();
-        window.open(canvas.toDataURL("png"));
+        var dataURL = canvas.toDataURL("png");
+
+        // Convert the dataURL to a Blob and create an object URL
+        var byteString = atob(dataURL.split(",")[1]);
+        var arrayBuffer = new ArrayBuffer(byteString.length);
+        var uintArray = new Uint8Array(arrayBuffer);
+        for (var i = 0; i < byteString.length; i++) {
+          uintArray[i] = byteString.charCodeAt(i);
+        }
+        var blob = new Blob([arrayBuffer], { type: "image/png" });
+        var objectURL = URL.createObjectURL(blob);
+
+        // Open the image in a new window or tab
+        window.open(objectURL);
       }
     };
 
