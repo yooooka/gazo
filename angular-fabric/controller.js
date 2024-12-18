@@ -110,7 +110,7 @@ kitchensink.controller("CanvasControls", function ($scope) {
           lockMovementX: true,
           id: "frontD",
         });
-        canvas.add(dimage).sendBackwards(dimage);
+        canvas.add(dimage);
       });
       addDefaultCta(120, 380);
       addDefaultText(110, 60);
@@ -130,7 +130,7 @@ kitchensink.controller("CanvasControls", function ($scope) {
             lockMovementX: true,
             id: "angleL",
           });
-          canvas.add(d30Limage).sendBackwards(d30Limage);
+          canvas.add(d30Limage);
         }
       );
       addDefaultCta(120, 410);
@@ -262,6 +262,7 @@ kitchensink.controller("CanvasControls", function ($scope) {
       } else {
         canvas.remove(ctrbg);
         canvas.add(ctrbg).sendToBack(ctrbg);
+        canvas.renderAll();
       }
     };
 
